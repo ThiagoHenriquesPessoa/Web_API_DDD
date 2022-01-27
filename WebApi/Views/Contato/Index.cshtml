@@ -1,0 +1,118 @@
+﻿@model IEnumerable<Entidades.Entidades.Contato>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<p>
+    <a class="btn btn-success" asp-action="Criacao">Novo Contato</a>
+</p>
+<p>
+    <h1>Ativos</h1>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataNascimento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ativo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sexo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Idade)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        { 
+            @if (item.Ativo == true)
+            {
+                <tr>
+                    <td width="16%">
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td width="16%">
+                        @Html.DisplayFor(modelItem => item.DataNascimento)
+                    </td>
+                    <td width="16%">
+                        @Html.DisplayFor(modelItem => item.Ativo)
+                    </td>
+                    <td width="16%">
+                        @Html.DisplayFor(modelItem => item.Sexo)
+                    </td>
+                    <td width="10%">
+                        @Html.DisplayFor(modelItem => item.Idade)
+                    </td>
+                    <td width="26%">
+                        <a class="btn btn-primary" asp-action="Editar" asp-route-id="@item.Id">Editar</a>
+                        <a class="btn btn-info" asp-action="Detalhes" asp-route-id="@item.Id">Detalhes</a>
+                        <a class="btn btn-danger" asp-action="Deletar" asp-route-id="@item.Id">Deletar</a>
+                    </td>
+                </tr>
+            }
+    }
+    </tbody>
+    </table>
+    <p>
+        <h1>Inativos</h1>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DataNascimento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ativo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Sexo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Idade)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                @if (item.Ativo == false)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataNascimento)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Ativo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Sexo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Idade)
+                        </td>
+                        <td>
+                            <a class="btn btn-primary" asp-action="Editar" asp-route-id="@item.Id">Editar</a>
+                            <a class="btn btn-danger" asp-action="Deletar" asp-route-id="@item.Id">Deletar</a>
+                        </td>
+                    </tr>
+                    }
+                }
+            </tbody>
+    </table>
